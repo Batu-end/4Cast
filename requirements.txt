@@ -1,0 +1,7 @@
+Libraries:
+
+pandas
+ta
+streamlit
+plotly
+yfinance
