@@ -23,11 +23,11 @@ def fetch_stock_data(ticker, period, interval):
 # using plotly, create a chart for the stock data
 def create_candlestick_chart(data, ticker):
     fig = go.Figure(data=[go.Candlestick(
-        x=data['Datetime'],
-        open=data['Open'],
-        high=data['High'],
-        low=data['Low'],
-        close=data['Close'],
+        x=data.index,
+        open=data[('Open', ticker)],
+        high=data[('High', ticker)],
+        low=data[('Low', ticker)],
+        close=data[('Close', ticker)],
         name=ticker,
     )])
 
@@ -112,7 +112,7 @@ st.write(len(data.index), len(data['Close']))
 st.subheader("check for missing closed values")
 st.write(data['Close'].isnull().sum())  # Check for missing values
 
-data['Close'].fillna(method='ffill', inplace=True)  # Forward fill missing values
+#data['Close'].fillna(method='ffill', inplace=True)  # Forward fill missing values
 
 st.subheader("are the close types numeric?")
 st.write(pd.api.types.is_numeric_dtype(data['Close']))
