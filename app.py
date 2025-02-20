@@ -112,7 +112,7 @@ st.write(len(data.index), len(data['Close']))
 st.subheader("check for missing closed values")
 st.write(data['Close'].isnull().sum())  # Check for missing values
 
-#data['Close'].fillna(method='ffill', inplace=True)  # Forward fill missing values
+data['Close'].fillna(method='ffill', inplace=True)  # Forward fill missing values
 
 st.subheader("are the close types numeric?")
 st.write(pd.api.types.is_numeric_dtype(data['Close']))
