@@ -2,7 +2,7 @@ import streamlit as st
 import yfinance as yf
 import plotly.graph_objects as go # for creating candlestick chart
 import pandas as pd
-from src.data_fetch import fetch_stock_data
+from data.data_fetch import fetch_stock_data
 
 
 ###########################################
@@ -52,7 +52,7 @@ def create_candlestick_chart(data, ticker):
         ))
 
 
-    
+
     # customize the chart layout
     fig.update_layout(
         title=f"Closing Prices - {ticker}.",
@@ -65,13 +65,13 @@ def create_candlestick_chart(data, ticker):
     )
 
 
-    
+
     st.plotly_chart(fig, use_container_width=True)
 
 
 # create a dropdown for stock ticker
 st.title("4Cast - спс влаб")
-stock_ticker = st.selectbox("Select a Stock", ["AAPL", "GOOG", "TSLA", "AMZN", "MSFT", "NVDA", "QQQ"]) # currently only 6 stocks available.
+stock_ticker = st.selectbox("Select a Stock", ["AAPL", "GOOG", "TSLA", "AMZN", "MSFT", "NVDA", "QQQ"]) # currently only few stocks available.
 
 # fetch the data for the selected stock, selected period and intervals
 data = fetch_stock_data(stock_ticker, period='1yr', interval='1d')
@@ -86,7 +86,7 @@ data.index = pd.to_datetime(data.index)
 
     # streamlit's own charts
     # st.line_chart(data['Close'])
-    
+
 # if data.isnull().any().any():
 #     st.error("The stock data contains missing values. Please try another stock.")
 #     st.write(data.isnull().sum())  # Show which columns have missing values
