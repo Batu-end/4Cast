@@ -13,3 +13,7 @@
 !src/
 !src/indicators.py
 !src/main.py
+
+!academicDataset/
+!academicDataset/generateCsv.py
+!academicDataset/generateCsv_oneStock.py

@@ -10,7 +10,7 @@ Functions:
 import yfinance as yf # previous price data API (free)
 import pandas as pd
 from datetime import datetime, timedelta
-from src.indicators import add_indicators
+from ..src.indicators import add_indicators
 
 def fetch_stock_data(ticker, period="5y", interval="1d"):
     """
@@ -34,7 +34,7 @@ def fetch_stock_data(ticker, period="5y", interval="1d"):
     else:
         stock_data = yf.download(ticker, period=period, interval=interval)
 
-    data = add_indicators(stock_data)
+    data = indicators.add_indicators(stock_data)
 
     return stock_data
 
@@ -42,7 +42,7 @@ def fetch_stock_data(ticker, period="5y", interval="1d"):
 def write_to_excel(data):
 
     ticker = "NVDA"
-    start_date = "2020-01-01"
+    start_date = "1995-01-01"
     end_date = "2025-02-21"
 
     data = yf.download(ticker, start=start_date, end=end_date)
