@@ -14,6 +14,8 @@
 !src/indicators.py
 !src/main.py
 
-!academicDataset/
+!*academicDataset/
 !academicDataset/generateCsv.py
 !academicDataset/generateCsv_oneStock.py
+!academicDataset/preprocessing.py
+!academicDataset/data.csv
