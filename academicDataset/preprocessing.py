@@ -6,6 +6,8 @@ df = pd.read_csv('academicDataset/data.csv', parse_dates=['Date'], index_col='Da
 print(df.head())  # Check the first few rows
 print(df.isnull().sum())  # Check for missing values
 
+df = df.drop('Volume', axis=1)  # Drop the 'Volume' column
+
 # Generate a complete date range and forward-fill missing values
 df = df.asfreq('D', method='ffill')  # Forward-fill prices on non-trading days
 df = df[~df.index.duplicated(keep='first')] # Remove duplicate dates
