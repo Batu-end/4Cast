@@ -10,7 +10,7 @@ Functions:
 import yfinance as yf # previous price data API (free)
 import pandas as pd
 from datetime import datetime, timedelta
-from ..src.indicators import add_indicators
+from src.indicators import add_indicators
 
 def fetch_stock_data(ticker, period="5y", interval="1d"):
     """
@@ -34,7 +34,7 @@ def fetch_stock_data(ticker, period="5y", interval="1d"):
     else:
         stock_data = yf.download(ticker, period=period, interval=interval)
 
-    data = indicators.add_indicators(stock_data)
+    data = add_indicators(stock_data)
 
     return stock_data
 
