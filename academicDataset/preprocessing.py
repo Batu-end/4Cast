@@ -11,6 +11,11 @@ df = df.drop('Volume', axis=1)  # Drop the 'Volume' column
 df['Range'] = df['High'] - df['Low']  # Create a new column 'Range'
 df = df.drop(['High', 'Low'], axis=1)  # Drop the 'High' and 'Low' columns
 
+df['MA-20'] = df['Close'].rolling(window=20).mean()  # Calculate the 20-day moving average
+df['MA-50'] = df['Close'].rolling(window=50).mean()  # Calculate the 50-day moving average
+
+df = df.dropna()  # Drop rows with missing values
+
 
 # Fill missing values
 
